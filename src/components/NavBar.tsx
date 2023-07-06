@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Icons } from './Icons';
 import { buttonVariants } from './ui/Button';
 import { getAuthSession } from '@/lib/auth';
+import UserAccountNav from './UserAccountNav';
 
 async function NavBar() {
   const session = await getAuthSession();
@@ -17,8 +18,8 @@ async function NavBar() {
           </p>
         </Link>
         {/* 검색창 */}
-        {session ? (
-          <p>you logged in</p>
+        {session?.user ? (
+          <UserAccountNav user={session.user} />
         ) : (
           <Link
             href='/sign-in'
