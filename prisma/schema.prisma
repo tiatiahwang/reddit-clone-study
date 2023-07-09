@@ -53,10 +53,10 @@ model User {
 
   accounts      Account[]
   sessions      Session[]
-  post          Post[]
-  comment       Comment[]
+  posts         Post[]
+  comments      Comment[]
   commentVote   CommentVote[]
-  vote          Vote[]
+  votes         Vote[]
   subscriptions Subscription[]
   
 }
@@ -83,10 +83,10 @@ model Post {
   updatedAt   DateTime  @updatedAt
   subreddit   Subreddit @relation(fields: [subredditId], references: [id])
   subredditId String
-  auther      User      @relation(fields: [authorId], references: [id])
-  authorId      String
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String
   comments    Comment[]
-  vote        Vote[]
+  votes       Vote[]
 
   @@index([subredditId])
   @@index([authorId])
