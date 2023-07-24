@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
@@ -14,7 +14,7 @@ const Page = () => {
   const [input, setInput] = useState<string>('');
   const router = useRouter();
   const { loginToast } = useCustomToast();
-
+  const pathname = usePathname();
   const { mutate: createCommunity, isLoading } =
     useMutation({
       mutationFn: async () => {
@@ -56,7 +56,8 @@ const Page = () => {
         });
       },
       onSuccess: (data) => {
-        router.push(`/r/${data}`);
+        console.log(pathname);
+        //router.push(`/r/${data}`);
       },
     });
   return (

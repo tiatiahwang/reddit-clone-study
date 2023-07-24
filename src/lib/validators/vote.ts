@@ -9,11 +9,11 @@ export type PostVoteRequest = z.infer<
   typeof PostVoteValidator
 >;
 
-export const CommentValidator = z.object({
+export const CommentVoteValidator = z.object({
   commentId: z.string(),
   voteType: z.enum(['UP', 'DOWN']),
 });
 
 export type CommentVoteRequest = z.infer<
-  typeof CommentValidator
+  typeof CommentVoteValidator
 >;
