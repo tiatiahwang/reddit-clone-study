@@ -3,6 +3,7 @@ import { Icons } from './Icons';
 import { buttonVariants } from './ui/Button';
 import { getAuthSession } from '@/lib/auth';
 import UserAccountNav from './UserAccountNav';
+import SearchBar from './SearchBar';
 
 async function NavBar() {
   const session = await getAuthSession();
@@ -17,7 +18,7 @@ async function NavBar() {
             Reddit
           </p>
         </Link>
-        {/* 검색창 */}
+        <SearchBar />
         {session?.user ? (
           <UserAccountNav user={session.user} />
         ) : (
